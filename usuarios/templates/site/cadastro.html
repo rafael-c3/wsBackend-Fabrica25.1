@@ -24,6 +24,18 @@
         <br>
         <button type="submit">Cadastrar</button>
     </form>
+    <form action="{% url 'site:criar' %}" method="post">
+        {% csrf_token %}    
+        {% for fields in filme %}
+            <br>
+            {{ fields.label_tag }}
+            <br>
+            {{ fields }}
+            <br>
+        {% endfor %}
+        <br>
+        <button type="submit">Cadastrar</button>
+    </form>
     <br>
     <button><a href="{% url 'site:home' %}">Voltar</a></button>
 </body>

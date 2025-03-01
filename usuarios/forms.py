@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuario
+from .models import Usuario, Filme
 
 class UsuarioForm(forms.ModelForm):
     class Meta:
@@ -19,4 +19,16 @@ class UsuarioForm(forms.ModelForm):
             'nascimento': forms.DateInput(attrs={'nascimento': 'forms-control', 'type': 'date'}),
             'senha': forms.PasswordInput(attrs={'senha': 'form-control'}),
         }
-        
+
+class FilmeForm(forms.ModelForm):
+    class Meta:
+        model = Filme
+        fields = ['titulo', 'ano']
+        labels = {
+            'titulo': 'Titulo',
+            'ano': 'Ano',
+        }
+        widgets = {
+            'titulo': forms.TextInput(attrs={'titulo': 'form-control'}),
+            'ano': forms.DateInput(attrs={'ano': 'form-control'}),
+        }

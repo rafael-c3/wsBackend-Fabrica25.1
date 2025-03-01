@@ -1,16 +1,20 @@
 from django.shortcuts import render, redirect
 from .models import Usuario
-from .forms import UsuarioForm
+from .forms import UsuarioForm, FilmeForm
+import requests
 
 def home_view(request):
+    
     return render(request, 'site/home.html')
 
 def register_view(request):
     if request.method == 'GET':
         form = UsuarioForm()
-        return render(request, 'site/cadastro.html', {'form': form})
+        filme = FilmeForm()
+        return render(request, 'site/cadastro.html', {'form': form, 'filme': filme})
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
+        filme = FilmeForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('site:listar')
@@ -44,5 +48,3 @@ def update_view(request, pk):
             form.save()
             return redirect('site:listar')
         
-    
-                

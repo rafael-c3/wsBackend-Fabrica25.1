@@ -9,3 +9,10 @@ class Usuario(models.Model):
 
     def __str__(self):
         return (self.nome + " " + self.sobrenome)
+    
+class Filme(models.Model):
+    titulo = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    ano = models.IntegerField()
+
+    def __str__(self):
+        return self.titulo
