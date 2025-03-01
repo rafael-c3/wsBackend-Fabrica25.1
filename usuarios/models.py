@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Usuario(models.Model):
     nome = models.CharField(max_length=20)
@@ -8,11 +9,12 @@ class Usuario(models.Model):
     senha = models.CharField(max_length=30)
 
     def __str__(self):
-        return (self.nome + " " + self.sobrenome)
+        return self.nome
     
 class Filme(models.Model):
-    titulo = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    ano = models.IntegerField()
+    titulo = models.CharField(max_length=30)
+    ano = models.DateField()
+    user = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.titulo

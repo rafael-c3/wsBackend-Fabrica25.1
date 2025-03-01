@@ -19,11 +19,12 @@
 
             {% for usuario in usuarios %}
                 <tr>
-                    <td>{{ usuario.nome }}</td>
-                    <td>{{ usuario.sobrenome }}</td>
-                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.nome }} | </td>
+                    <td>{{ usuario.sobrenome }} | </td>
+                    <td>{{ usuario.email }} | </td>
                     <td>{{ usuario.nascimento }}</td>
                     <td>
+                        <a href="{% url 'site:filmes' usuario.id %}"><button>Filmes</button></a>
                         <a href="{% url 'site:detalhe' usuario.id %}"><button>Detalhes</button></a>
                         <a href="{% url 'site:atualizar' usuario.id %}"><button>Atualizar</button></a>
                         <a href="{% url 'site:deletar' usuario.id %}"><button>Deletar</button></a>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Filmes de {{ usuario }}</h1>
+    {% if filmes %}
+        {% for filme in filmes %}
+            <li>{{ filme.titulo }} - {{ filme.ano }}</li>
+            <br>
+        {% endfor %}
+        <p>Não tem filmes</p>
+    {% endif %}
+
+    <h3>Adicionar novo filme</h3>
+    <form action="{% url 'site:filmes' usuario.id %}" method="post">
+        {% csrf_token %}    
+        {% for field in filmes %}
+            <br>
+            {{ field.label_tag }}
+            <br>
+            {{ field }}
+            <br>
+        {% endfor %}
+        <br>
+        <button type="submit">Adicionar</button>
+    </form>
+</body>
+</html>

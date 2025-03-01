@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Usuario
+from .models import Usuario, Filme
 from .forms import UsuarioForm, FilmeForm
 import requests
 
@@ -48,3 +48,16 @@ def update_view(request, pk):
             form.save()
             return redirect('site:listar')
         
+def filmes_view(request, pk):
+    usuario = Usuario.objects.get(pk = pk)
+    filmes = Filme.objects.filter(pk =pk)  # Obtém os filmes relacionados a esse usuário
+    if request.method == 'POST':
+        form = FilmeForm(request.POST)
+        if form.is_valid():
+            filme = form.save(commit=False)
+            filme.usuario = usuario  # Associa o filme ao usuário
+            filme.save()  # Salva o filme
+            return redirect('site:adicionar_filme_usuario', usuario_id=usuario.id)  # Redireciona para a mesma página
+    if request.method == 'GET':
+        form = FilmeForm()
+        return render(request, 'site/filmes.html', {'usuario': usuario,'filmes': filmes})

@@ -18,6 +18,14 @@
     <button><a href="{% url 'site:criar' %}">Criar usuario</a></button>
     <br>    
     
-
+    <h1>Buscar Filme</h1>
+        {% for movies in movie %}
+        <h2>Resultado:</h2>
+        <p><strong>Título:</strong> {{ movie.Title }}</p>
+        <p><strong>Ano:</strong> {{ movie.Year }}</p>
+        <p><strong>Gênero:</strong> {{ movie.Genre }}</p>
+        <p><strong>Diretor:</strong> {{ movie.Director }}</p>
+        <p><strong>Sinopse:</strong> {{ movie.Plot }}</p>
+        {% endfor %}
 </body>
 </html>
