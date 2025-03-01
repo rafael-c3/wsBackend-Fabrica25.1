@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalhes do usuario:</h1>
+    <p>Nome: {{ usuario.nome }}</p>
+    <p>Sobrenome: {{ usuario.sobrenome }}</p>
+    <p>Email: {{ usuario.email }}</p>
+    <p>Nascimento: {{ usuario.nascimento }}</p>
+    <a href="{% url 'site:listar' %}"><button>Voltar</button></a>
+</body>
+</html>

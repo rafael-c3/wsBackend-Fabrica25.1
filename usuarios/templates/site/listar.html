@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if usuarios %}
+        <h1>Lista de usuarios:</h1>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+                <th>Nascimento</th>
+                <th>Opções</th>
+            </tr>
+
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.sobrenome }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.nascimento }}</td>
+                    <td>
+                        <a href="{% url 'site:detalhe' usuario.id %}"><button>Detalhes</button></a>
+                        <a href="{% url 'site:atualizar' usuario.id %}"><button>Atualizar</button></a>
+                        <a href="{% url 'site:deletar' usuario.id %}"><button>Deletar</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h1>Nao existem usuarios</h1>
+        <button><a href="{% url 'site:criar' %}">Criar usuario</a></button>
+        <button><a href="{% url 'site:home' %}">Voltar</a></button>
+    {% endif %}
+    <button><a href="{% url 'site:home' %}">Voltar</a></button>
+
+</body>
+</html>
