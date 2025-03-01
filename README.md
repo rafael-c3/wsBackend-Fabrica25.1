@@ -7,8 +7,8 @@ Cadastro de filmes com título e ano.
 Relacionamento entre usuários e filmes (cada filme é associado a um usuário).  
 Interface de administração do Django para gerenciar usuários e filmes.  
 Tecnologias Utilizadas  
-Python 3.x  
-Django 3.x  
+Python 3.10
+Django 5.1.6
 Banco de dados SQLite (padrão do Django)  
 Instalação  
 Clonar o repositório:  
